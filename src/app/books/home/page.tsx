@@ -4,7 +4,7 @@ import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 export default function Home() {
 	return (
 		<div>
-			<HeaderTitle icon={ChartLineUp} title="Início" />
+			<HeaderTitle icon={} title="Início" />
 		</div>
 	);
 }
