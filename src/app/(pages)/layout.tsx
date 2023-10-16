@@ -7,7 +7,7 @@ interface BooksLayout {
 
 export default function BooksLayout({children}:BooksLayout) {
 	return (
-		<div className="flex flex-row gap-24">
+		<div className="flex flex-row gap-20">
 			<SideBar />
 			<main className="pt-[4.5rem]">
 				{children}

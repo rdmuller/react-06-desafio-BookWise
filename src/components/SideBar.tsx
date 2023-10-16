@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 import { SignIn } from "@phosphor-icons/react/dist/ssr/SignIn";
 import { Binoculars } from "@phosphor-icons/react/dist/ssr/Binoculars";
+import { User } from "@phosphor-icons/react/dist/ssr/User";
 
 export function SideBar() {
 	return (
@@ -14,14 +15,21 @@ export function SideBar() {
 			<div className="m-5 flex flex-col relative justify-between items-center w-[14.5rem]">
 				<div className="flex mt-10 flex-col gap-16">
 					<Image src="/logo_full.svg" width={128} height={48} alt="" />
+
 					<div className="flex flex-col gap-4">
-						<Link href="/" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
+						<Link href="/home" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
 							<ChartLineUp size={24} />
 							Inicio
 						</Link>
-						<Link href="/" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
+
+						<Link href="/explore" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
 							<Binoculars size={24} />
 							Explorar
+						</Link>
+
+						<Link href="/profile" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
+							<User size={24} />
+							Perfil
 						</Link>
 					</div>
 				</div>
