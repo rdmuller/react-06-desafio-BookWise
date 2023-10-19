@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 import { SignIn } from "@phosphor-icons/react/dist/ssr/SignIn";
-import { Binoculars } from "@phosphor-icons/react/dist/ssr/Binoculars";
-import { User } from "@phosphor-icons/react/dist/ssr/User";
+import { ButtonLink } from "./components/ButtonLink";
 
 export function SideBar() {
+
 	return (
 		<aside className="h-screen flex relative">
 			<div className="rounded-xl absolute m-5 top-0 left-0 right-0 bottom-0 flex w-[14.5rem]">
@@ -17,20 +16,9 @@ export function SideBar() {
 					<Image src="/logo_full.svg" width={128} height={48} alt="" />
 
 					<div className="flex flex-col gap-4">
-						<Link href="/home" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
-							<ChartLineUp size={24} />
-							Inicio
-						</Link>
-
-						<Link href="/explore" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
-							<Binoculars size={24} />
-							Explorar
-						</Link>
-
-						<Link href="/profile" className="text-gray-400 hover:text-gray-100 flex gap-3 m-2">
-							<User size={24} />
-							Perfil
-						</Link>
+						<ButtonLink title="Início" url="/home" />
+						<ButtonLink title="Explorar" url="/explore" />
+						<ButtonLink title="Perfil" url="/profile" />
 					</div>
 				</div>
 

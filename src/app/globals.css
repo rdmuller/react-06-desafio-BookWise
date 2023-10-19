@@ -6,4 +6,7 @@
     * {
         @apply box-border p-0 m-0;
     }
+    body {
+        @apply text-gray-300 leading-base text-sm font-normal;
+    }
 }

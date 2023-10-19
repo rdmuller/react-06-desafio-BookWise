@@ -7,17 +7,20 @@ export async function GET(req: NextRequest) {
 
 	const lastratings = await prisma.rating.findMany({
 		select: {
+			id: true,
 			created_at: true,
 			rate: true,
 			user: {
 				select: {
-					name: true
+					name: true,
+					avatar_url: true
 				}
 			},
 			book: {
 				select: {
 					name: true,
 					author: true,
+					cover_url: true
 				}
 			},
 			description: true,

@@ -1,9 +1,11 @@
 import { HeaderTitle } from "@/components/HeaderTitle";
+import LastRatings from "./components/LastRatings";
 
-export default function Home() {
+export default async function Home() {
 	return (
-		<div>
+		<div className="flex flex-col gap-10">
 			<HeaderTitle icon="CharLineUp" title="Início" />
+			<LastRatings />
 		</div>
 	);
 }

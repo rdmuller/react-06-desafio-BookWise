@@ -26,7 +26,7 @@ export default function Home() {
 					<SignInButton icon="github">
 						Entrar com GitHub
 					</SignInButton>
-					<Link href="/books/home" className="flex gap-5 text-lg font-bold text-gray-100 leading-base bg-gray-600 rounded-lg px-6 py-5 hover:bg-gray-500">
+					<Link href="/home" className="flex gap-5 text-lg font-bold text-gray-100 leading-base bg-gray-600 rounded-lg px-6 py-5 hover:bg-gray-500">
 						<Image src="/guest-icon.svg" width={32} height={32} alt="" />
 						Acessar como visitante
 					</Link>

@@ -44,6 +44,9 @@ const config: Config = {
 				short: "140%",
 				base: "160%",
 				tall: "180%",
+			},
+			boxShadow: {
+				card: "0 0 0 2px #303F73",
 			}
 		},
 	},
