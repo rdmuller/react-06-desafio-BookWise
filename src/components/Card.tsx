@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import Image from "next/image";
 
 interface BookCardProps {
@@ -12,7 +14,7 @@ interface BookCardProps {
 }
 
 export function BookCard({author, bookName, description, created_at, bookCoverUrl, userAvatarUrl, rate, userName}: BookCardProps) {
-	console.log(bookCoverUrl);
+	const createdAtRelativeToNow = formatDistanceToNow(new Date(created_at ? created_at : new Date()), {locale: ptBR, addSuffix: true});
 
 	return (
 		<div className="flex flex-col gap-8 p-6 rounded-lg bg-gray-700 hover:shadow-card border-gray-500">
@@ -20,7 +22,7 @@ export function BookCard({author, bookName, description, created_at, bookCoverUr
 				<Image className="rounded-full border-emerald-300 border w-10 h-10" src={userAvatarUrl} width={40} height={40} alt="" />
 				<div className="flex flex-col">
 					<span className="text-gray-100 text-base">{userName}</span>
-					<span className="text-gray-400">{created_at}</span>
+					<span className="text-gray-400">{createdAtRelativeToNow}</span>
 				</div>
 			</div>
 			<div className="flex flex-row gap-5">
