@@ -1,5 +1,5 @@
 import { BookCard } from "@/components/Card";
-import { api } from "../../../../../lib/axios";
+import axios from "axios";
 
 interface Rating {
 	id: string,
@@ -20,7 +20,7 @@ interface Rating {
 export const revalidate = 60;
 
 export default async function LastRatings() {
-	const lastRatings: Rating[] = await api.get("/books/last-ratings", {
+	const lastRatings: Rating[] = await axios.get("/books/last-ratings", {
 		params: {
 			page_rows: 5
 		}

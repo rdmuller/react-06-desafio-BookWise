@@ -6,7 +6,7 @@ import { ButtonLink } from "./components/ButtonLink";
 export function SideBar() {
 
 	return (
-		<aside className="h-screen flex relative">
+		<aside className="h-screen flex relative max-h-[61.75rem]">
 			<div className="rounded-xl absolute m-5 top-0 left-0 right-0 bottom-0 flex w-[14.5rem]">
 				<Image className="h-full w-full object-cover rounded-lg" src="/bg_menu.svg" width={0} height={0} alt="" />
 			</div>
