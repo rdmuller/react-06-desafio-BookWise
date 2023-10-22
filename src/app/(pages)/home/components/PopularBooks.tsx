@@ -10,9 +10,9 @@ interface Book {
 export const revalidate = 60;
 
 export default async function PopularBooks() {
-	const popularBooks: Book[] = await axios.get("/books/most-popular", {
+	const popularBooks: Book[] = await axios.get("http://localhost:3000/api/books/most-popular", {
 		params: {
-			page_rows: 3,
+			page_rows: 3
 		}
 	}).then(res => res.data.most_popular_books);
 

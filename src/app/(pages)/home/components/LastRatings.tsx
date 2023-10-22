@@ -20,7 +20,7 @@ interface Rating {
 export const revalidate = 60;
 
 export default async function LastRatings() {
-	const lastRatings: Rating[] = await axios.get("/books/last-ratings", {
+	const lastRatings: Rating[] = await axios.get("http://localhost:3000/api/books/last-ratings", {
 		params: {
 			page_rows: 5
 		}
