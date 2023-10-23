@@ -1,6 +1,8 @@
+import { BookSimpleCard } from "@/components/SimpleCard";
 import axios from "axios";
 
 interface Book {
+	name: string,
     book_id: string,
     author: string, 
     cover_url: string,
@@ -17,10 +19,14 @@ export default async function PopularBooks() {
 	}).then(res => res.data.most_popular_books);
 
 	return (
-		<div className="flex flex-col gap-3 w-[38rem] flex-1 relative">
+		<div className="flex flex-col gap-3 w-[20rem] flex-1 relative">
 			<span className="text-sm leading-base font-normal">Livros populares</span>
 			<div className="flex flex-col gap-3 flex-1 absolute bottom-0 top-9">
-				<p>{JSON.stringify(popularBooks)}</p>
+				{popularBooks.map(book => {
+					return (
+						<BookSimpleCard key={book.book_id} author={book.author} avgRate={book.avg_rate} coverUrl={book.cover_url} name={book.name} />
+					);
+				})}
 			</div>
 		</div>
 	);

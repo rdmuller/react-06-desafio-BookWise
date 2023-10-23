@@ -1,4 +1,4 @@
-import { BookCard } from "@/components/Card";
+import { BookCard } from "@/components/BookCard";
 import axios from "axios";
 
 interface Rating {
