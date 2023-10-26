@@ -47,9 +47,9 @@ const config: Config = {
 			},
 			boxShadow: {
 				card: "0 0 0 2px #303F73",
+				tag: "0 0 0 1px #8381D9",
 			}
 		},
 	},
-	plugins: [require("daisyui")],
 };
 export default config;

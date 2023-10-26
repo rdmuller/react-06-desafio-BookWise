@@ -1,7 +1,8 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Image from "next/image";
-import { ViewRate } from "./ViewRate";
+import { ViewRate } from "../ViewRate";
+import { Comment } from "./components/Comment";
 
 interface BookCardProps {
 	created_at?: string,
@@ -27,13 +28,13 @@ export function BookCard({author, bookName, description, created_at, bookCoverUr
 				</div>
 			</div>
 			<div className="flex flex-row gap-5">
-				<Image src={bookCoverUrl} width={108} height={152} alt="" />
+				<Image className="w-[6.75rem] h-[9.5rem] rounded-s" src={bookCoverUrl} width={108} height={152} alt="" />
 				<div className="flex flex-col gap-5">
 					<div className="flex flex-col">
 						<span className="leading-short font-bold text-base">{bookName}</span>
 						<span className="text-gray-400">{author}</span>
 					</div>
-					<p>{description}</p>
+					<Comment comment={description} lenghtComment={230} />
 				</div>
 			</div>
 			

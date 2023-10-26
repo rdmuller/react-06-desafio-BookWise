@@ -17,7 +17,7 @@ interface Rating {
 	description: string
 }
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function LastRatings() {
 	const lastRatings: Rating[] = await axios.get("http://localhost:3000/api/books/last-ratings", {
@@ -27,9 +27,9 @@ export default async function LastRatings() {
 	}).then(res => res.data.lastratings);
 
 	return (
-		<div className="flex flex-col gap-3 w-[38rem] flex-1 relative">
+		<div className="flex flex-col gap-3 w-[38rem] min-w-[38rem] relative">
 			<span className="text-sm leading-base font-normal">Avaliações mais recentes</span>
-			<div className="flex flex-col gap-3 flex-1 absolute bottom-0 top-9">
+			<div className="flex flex-col gap-3 absolute bottom-0 top-9 min-w-[38rem] overflow-y-auto p-[2px]">
 				{lastRatings.map((rating) => {
 					return (
 						<BookCard key={rating.id} author={rating.book.author} bookName={rating.book.name} description={rating.description} created_at={rating.created_at} rate={rating.rate} userName={rating.user.name} bookCoverUrl={rating.book.cover_url} userAvatarUrl={rating.user.avatar_url} />

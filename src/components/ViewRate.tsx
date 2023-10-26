@@ -7,16 +7,16 @@ interface ViewRateProps {
 
 export function ViewRate({ rate }: ViewRateProps) {
 	return (
-		<div className="flex flex-row gap-2 text-purple-100">
-			<span>{rate}</span>
+		<div className="flex flex-row gap-1 text-purple-100">
 			{Array.from(Array(5).keys()).map(i => {
 				const numStar = i + 1;
 				const weight = (Number(rate) >= numStar) ? "fill" : "regular";
-				//<StarHalf size={16} weight="fill" />
+				const isHalfStar = (Number(rate) < numStar && Number(rate) >= (numStar-0.5));
 
 				return (
 					<>
-					    <Star key={i} weight={weight} size={16} />
+						{!isHalfStar && <Star key={i} weight={weight} size={16} />}
+						{isHalfStar && <StarHalf size={16} weight="fill" />}
 					</>
 				);    
 			})}

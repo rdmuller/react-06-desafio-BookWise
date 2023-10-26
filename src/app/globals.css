@@ -9,4 +9,23 @@
     body {
         @apply text-gray-300 leading-base text-sm font-normal;
     }
+
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        @apply rounded-full;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-gray-950;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-500
+    }
 }
