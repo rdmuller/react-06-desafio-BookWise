@@ -5,11 +5,11 @@ import { ComponentProps, ElementRef, forwardRef, useState } from "react";
 export type TagButtonProps = ComponentProps<"button"> & {
 	id: string,
 	onSelectTag: (id:string) => void,
-	onUnSelectTag: (id:string) => void
+	onUnselectTag: (id:string) => void
 }
 
 export const TagButton = forwardRef<ElementRef<"button">, TagButtonProps>(
-	({ id, children, onSelectTag, onUnSelectTag, ...props }: TagButtonProps, ref) => {
+	({ id, children, onSelectTag, onUnselectTag, ...props }: TagButtonProps, ref) => {
 		const [selected, setSelected] = useState(false);
 
 		function handleSelect() {
@@ -20,7 +20,7 @@ export const TagButton = forwardRef<ElementRef<"button">, TagButtonProps>(
 			if (newStateOfSelect) {
 				onSelectTag(id);
 			} else {
-				onUnSelectTag(id);
+				onUnselectTag(id);
 			}
 		}
 

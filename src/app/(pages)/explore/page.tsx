@@ -1,17 +1,22 @@
 import { HeaderTitle } from "@/components/HeaderTitle";
-import { TagBar } from "@/components/TagBar";
+import { BookList } from "./components/BookList";
+
+interface Category {
+	id: string,
+	name: string
+}
 
 export default async function Explore() {
-	const categories = await  fetch(`${process.env.NEXT_URL}/api/categories`, 
+	const categories: Category[] = await fetch(`${process.env.NEXT_URL}/api/categories`, 
 		{ cache: "force-cache" }
 	)
 		.then(res => res.json())
 		.then(data => data.categories);
-
+		
 	return (
-		<div >
+		<div className="flex flex-col relative">
 			<HeaderTitle icon="Binoculars" title="Explorar" />
-			<TagBar categories={categories} />
+			<BookList categories={categories} />
 		</div>
 	);
 }
