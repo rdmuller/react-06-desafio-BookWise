@@ -1,16 +1,34 @@
 "use client";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr/MagnifyingGlass";
-import { ComponentProps, ElementRef, forwardRef } from "react";
+import { ChangeEvent, ComponentProps, ElementRef, FormEvent, forwardRef, useState } from "react";
 
-type SearchFormProps = ComponentProps<"form"> 
+type SearchFormProps = ComponentProps<"form"> & {
+	onSearchSubmit: (searchText: string) => void,
+}
 
 export const SearchForm = forwardRef<ElementRef<"form">, SearchFormProps>(
-	({...props}: SearchFormProps, ref) => {
+	({onSearchSubmit, ...props}: SearchFormProps, ref) => {
+		const [searchText, setSearchText] = useState("");
+
+		function handleSubmit(event: FormEvent) {
+			event.preventDefault();
+			onSearchSubmit(searchText);
+		}
+
+		function handleChangeSearchText(event: ChangeEvent<HTMLInputElement>) {
+			setSearchText(event.target.value);
+		}
+
 		return (
-			<form {...props} ref={ref}>
+			<form {...props} ref={ref} onSubmit={handleSubmit}>
 				<div className="flex flex-row gap-2 border border-gray-500 text-gray-500 rounded-[0.25rem] flex-1 px-5 py-[0.875rem] [&:has(input:focus)]:border-green-200 [&:has(input:focus)]:text-green-200 items-center">
-					<input type="text" className="text-gray-400 text-sm leading-base bg-transparent border-none focus:outline-0 flex-1 focus:text-gray-200" />
-					<MagnifyingGlass size={20} />
+					<input type="text" 
+						className="text-gray-400 text-sm leading-base bg-transparent border-none focus:outline-0 flex-1 focus:text-gray-200" 
+						onChange={handleChangeSearchText}
+					/>
+					<button type="submit">
+						<MagnifyingGlass size={20} values={searchText} />
+					</button>
 				</div>
 			</form>
 		);
