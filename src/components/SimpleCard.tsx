@@ -10,7 +10,7 @@ interface BookSimpleCardProps {
 
 export function BookSimpleCard({author, name, avgRate, coverUrl}: BookSimpleCardProps) {
 	return (
-		<div className="flex flex-col gap-8 p-6 rounded-lg bg-gray-700 hover:shadow-card border-gray-500">
+		<div className="flex flex-col flex-1 gap-8 p-6 rounded-lg bg-gray-700 hover:shadow-card border-gray-500">
 			<div className="flex flex-row gap-5">
 				<Image className="rounded-s w-[4rem] h-[5.875rem]" src={coverUrl} width={64} height={94} alt="" />
 				<div className="flex flex-col gap-5 justify-between">
