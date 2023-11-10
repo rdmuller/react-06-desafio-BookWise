@@ -14,7 +14,7 @@ export default async function Explore() {
 		.then(data => data.categories);
 		
 	return (
-		<div className="flex flex-col relative">
+		<div className="flex flex-col relative flex-1">
 			<HeaderTitle icon="Binoculars" title="Explorar" />
 			<BookList categories={categories} />
 		</div>

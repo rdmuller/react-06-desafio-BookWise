@@ -1,7 +1,26 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+	const searchParams = req.nextUrl.searchParams;
+	const searchText = String(searchParams.get("searchText"));
+	const tagsConcatenated = searchParams.get("tags"); //String(searchParams.get("tags"));
+
+	const tagsQuery = (tagsConcatenated?.toLowerCase() !== "all" && tagsConcatenated !== "") ? { 
+		categories: {
+			some: {
+				categoryId: {
+					in: tagsConcatenated?.split(",")
+				}
+			}
+		}
+	} : {};
+
+	const searchTextQuery = [
+		{ author: { contains: searchText } },
+		{ name: { contains: searchText } },
+	];
+
 	const books = await prisma.book.findMany({
 		select: {
 			name: true, 
@@ -9,8 +28,10 @@ export async function GET() {
 			author: true, 
 			cover_url: true,
 		},
-		take: 999999,
-		skip: 0
+		where: {
+			OR: searchTextQuery, 
+			AND: tagsQuery
+		}
 	});
 
 	const booksId = books.map(book => book.id);

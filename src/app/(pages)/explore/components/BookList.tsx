@@ -29,17 +29,25 @@ export function BookList({ categories }: BookListProps) {
 	const [books, setBooks] = useState<Book[]>([]);
 
 	useEffect(() => {
-		console.log("executando use effect");
 		const fetchData = async () => {
 			try {
 				//const listBooks: Book[] = await fetch(`${process.env.NEXT_URL}/api/books`)
 				//	.then(res => res.json())
 				//	.then(data => data.books);
-
-				const listBooks = await axios.get("/api/books")
+				
+				const tagsConcatenated: string = selectedTags.length > 0 ? selectedTags.reduce((acc, tag) => acc + "," + tag ) : "";
+				
+				const listBooks = await axios.get("/api/books", {
+					params: {
+						searchText: searchText,
+						tags: tagsConcatenated
+					}
+				})
 					.then(res => res.data.books);
 
 				setBooks(listBooks);
+
+				console.log("executou useEffect");
 			} catch (error) {
 				console.error("Erro buscando dados: ", error);
 			}
@@ -54,7 +62,7 @@ export function BookList({ categories }: BookListProps) {
 
 			<TagBar categories={categories} selectedTags={selectedTags} onSetSelectedTags={setSelectedTags} />
 
-			<div className="mt-12 flex flex-row flex-wrap gap-5">
+			<div className="top-44 pt-1 pl-1 flex flex-row flex-wrap gap-5 overflow-y-auto bottom-0 absolute">
 				{books.map(book => {
 					return (
 						<div key={book.book_id} className="flex flex-col h-[11.5rem] w-[19.5rem]">
