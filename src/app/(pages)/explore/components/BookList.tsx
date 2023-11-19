@@ -5,6 +5,7 @@ import { BookSimpleCard } from "@/components/SimpleCard";
 import { TagBar } from "@/components/TagBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BookDetails } from "./BookDetails";
 
 interface Category {
 	id: string,
@@ -27,6 +28,8 @@ export function BookList({ categories }: BookListProps) {
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 	const [searchText, setSearchText] = useState("");
 	const [books, setBooks] = useState<Book[]>([]);
+	const [showBookDetails, setShowBookDetails] = useState(false);
+	const [bookId, setBookId] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,8 +49,6 @@ export function BookList({ categories }: BookListProps) {
 					.then(res => res.data.books);
 
 				setBooks(listBooks);
-
-				console.log("executou useEffect");
 			} catch (error) {
 				console.error("Erro buscando dados: ", error);
 			}
@@ -56,6 +57,15 @@ export function BookList({ categories }: BookListProps) {
 		fetchData();
 	}, [searchText, selectedTags]);
 	
+	function handleShowBookDetails(id: string) {
+		setBookId(id);
+		setShowBookDetails(true);
+	}
+
+	function handleCloseBookDetails() {
+		setShowBookDetails(false);
+	}
+
 	return (
 		<div className="flex flex-col">
 			<SearchForm onSearchSubmit={setSearchText} className="flex absolute top-0 right-0 w-[27rem]" />
@@ -66,11 +76,19 @@ export function BookList({ categories }: BookListProps) {
 				{books.map(book => {
 					return (
 						<div key={book.book_id} className="flex flex-col h-[11.5rem] w-[19.5rem]">
-							<BookSimpleCard author={book.author} name={book.name} avgRate={book.avg_rate} coverUrl={book.cover_url} />
+							<BookSimpleCard 
+								id={book.book_id} 
+								onClickCard={handleShowBookDetails} 
+								author={book.author}
+								name={book.name} 
+								avgRate={book.avg_rate} 
+								coverUrl={book.cover_url} 
+							/>
 						</div>
 					);
 				})}
 			</div>
+			{showBookDetails && <BookDetails bookId={bookId} onCloseDetails={handleCloseBookDetails} />}
 		</div>
 	);
 }

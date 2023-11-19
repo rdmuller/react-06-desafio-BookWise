@@ -24,7 +24,14 @@ export default async function PopularBooks() {
 			<div className="flex flex-col gap-3 bottom-0 top-9">
 				{popularBooks.map(book => {
 					return (
-						<BookSimpleCard key={book.book_id} author={book.author} avgRate={book.avg_rate} coverUrl={book.cover_url} name={book.name} />
+						<BookSimpleCard 
+							key={book.book_id} 
+							id={book.book_id} 
+							author={book.author} 
+							avgRate={book.avg_rate} 
+							coverUrl={book.cover_url} 
+							name={book.name} 
+						/>
 					);
 				})}
 			</div>

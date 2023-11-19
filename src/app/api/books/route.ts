@@ -31,6 +31,9 @@ export async function GET(req: NextRequest) {
 		where: {
 			OR: searchTextQuery, 
 			AND: tagsQuery
+		},
+		orderBy: {
+			name: "asc"
 		}
 	});
 

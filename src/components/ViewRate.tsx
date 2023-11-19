@@ -14,10 +14,10 @@ export function ViewRate({ rate }: ViewRateProps) {
 				const isHalfStar = (Number(rate) < numStar && Number(rate) >= (numStar-0.5));
 
 				return (
-					<>
-						{!isHalfStar && <Star key={i} weight={weight} size={16} />}
+					<div key={i}>
+						{!isHalfStar && <Star weight={weight} size={16} />}
 						{isHalfStar && <StarHalf size={16} weight="fill" />}
-					</>
+					</div>
 				);    
 			})}
 			

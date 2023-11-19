@@ -48,6 +48,20 @@ const config: Config = {
 			boxShadow: {
 				card: "0 0 0 2px #303F73",
 				tag: "0 0 0 1px #8381D9",
+			},
+			keyframes: {
+				slideInRight: {
+					"0%": { transform: "translateX(100%)" },
+					"100%": { transform: "translateX(0%)" },
+				},
+				darken: {
+					from: { "background-color": "rgba(0,0,0,0)" },
+					to: { "background-color": "rgba(0,0,0,0.6)" },
+				}
+			},
+			animation: {
+				"slide-in-right": "slideInRight 0.5s ease-in-out",
+				darken: "darken 0.2s ease-in-out"
 			}
 		},
 	},
