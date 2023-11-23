@@ -17,6 +17,7 @@ export async function GET(req: Request, { params }: BookProps) {
 			cover_url: true,
 			ratings: {
 				select: {
+					id: true,
 					user: {
 						select: {
 							name: true,
@@ -62,6 +63,7 @@ export async function GET(req: Request, { params }: BookProps) {
 		}),
 		ratings: book.ratings.map(rating => {
 			return ({
+				id: rating.id,
 				user_name: rating.user.name,
 				user_avatar_url: rating.user.avatar_url,
 				rate: rating.rate,
