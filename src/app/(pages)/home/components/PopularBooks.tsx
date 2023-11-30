@@ -1,4 +1,4 @@
-import { BookSimpleCard } from "@/components/SimpleCard";
+import { BookSimpleCard } from "../../../components/SimpleCard";
 import axios from "axios";
 
 interface Book {

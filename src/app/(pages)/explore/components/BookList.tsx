@@ -1,11 +1,12 @@
 "use client";
 
-import { SearchForm } from "@/components/SearchForm";
-import { BookSimpleCard } from "@/components/SimpleCard";
-import { TagBar } from "@/components/TagBar";
+import { SearchForm } from "../../../components/SearchForm";
+import { BookSimpleCard } from "../../../components/SimpleCard";
+import { TagBar } from "../../../components/TagBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BookDetails } from "./BookDetails";
+//import { useSession } from "next-auth/react";
 
 interface Category {
 	id: string,
@@ -30,6 +31,8 @@ export function BookList({ categories }: BookListProps) {
 	const [books, setBooks] = useState<Book[]>([]);
 	const [showBookDetails, setShowBookDetails] = useState(false);
 	const [bookId, setBookId] = useState("");
+	//const { data: session } = useSession();
+	//console.log(JSON.stringify(session));
 
 	useEffect(() => {
 		const fetchData = async () => {

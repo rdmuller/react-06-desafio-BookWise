@@ -1,4 +1,4 @@
-import { BookCardWithComment } from "@/components/BookCardWithComment";
+import { BookCardWithComment } from "../../../components/BookCardWithComment";
 import axios from "axios";
 
 interface Rating {

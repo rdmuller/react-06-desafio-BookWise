@@ -1,10 +1,10 @@
-import { Popover } from "@/components/Popover";
-import { ViewRate } from "@/components/ViewRate";
+import { Popover } from "../../../components/Popover";
+import { ViewRate } from "../../../components/ViewRate";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { HeaderComment } from "@/components/HeaderComment";
-import { InfoCard } from "@/components/InfoCard";
+import { HeaderComment } from "../../../components/HeaderComment";
+import { InfoCard } from "../../../components/InfoCard";
 
 interface BookDetailsProps {
 	bookId: string,

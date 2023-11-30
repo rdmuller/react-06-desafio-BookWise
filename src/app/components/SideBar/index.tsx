@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignIn } from "@phosphor-icons/react/dist/ssr/SignIn";
 import { ButtonLink } from "./components/ButtonLink";
+import { getServerSession } from "next-auth";
 
-export function SideBar() {
+export async function SideBar() {
+	const session = await getServerSession();
 
 	return (
 		<aside className="h-screen flex relative max-h-[61.75rem]">
@@ -23,7 +25,8 @@ export function SideBar() {
 				</div>
 
 				<Link href="/" className="flex font-bold text-gray-200 gap-3 align-middle mb-5">
-                    Fazer login
+					{session?.user?.email ? "Logout" : "Fazer login"}
+                    
 					<SignIn size={20} />
 				</Link>
 

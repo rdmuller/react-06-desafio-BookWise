@@ -1,4 +1,4 @@
-import { HeaderTitle } from "@/components/HeaderTitle";
+import { HeaderTitle } from "../../components/HeaderTitle";
 import LastRatings from "./components/LastRatings";
 import PopularBooks from "./components/PopularBooks";
 

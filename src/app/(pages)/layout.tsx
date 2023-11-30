@@ -1,4 +1,5 @@
-import { SideBar } from "@/components/SideBar";
+//import { SideBar } from "@/components/SideBar";
+import { SideBar } from "../components/SideBar";
 import { ReactNode } from "react";
 
 interface BooksLayout {

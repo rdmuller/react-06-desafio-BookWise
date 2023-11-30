@@ -1,7 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { SignInButton } from "@/components/SignInButton";
 import Image from "next/image";
 import Link from "next/link";
+import { SignInButton } from "../components/SignInButton";
 
 export default function Home() {
 	return (
@@ -20,10 +19,10 @@ export default function Home() {
 					<span className="leading-base text-gray-200 font-normal text-base">Faça seu login ou acesse como visitante.</span>
 				</div>
 				<menu className="flex flex-col gap-4">
-					<SignInButton icon="google">
+					<SignInButton serviceToConnect="google">
 						Entrar com Google
 					</SignInButton>
-					<SignInButton icon="github">
+					<SignInButton serviceToConnect="github">
 						Entrar com GitHub
 					</SignInButton>
 					<Link href="/home" className="flex gap-5 text-lg font-bold text-gray-100 leading-base bg-gray-600 rounded-lg px-6 py-5 hover:bg-gray-500">

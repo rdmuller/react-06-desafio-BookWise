@@ -1,4 +1,4 @@
-import { HeaderTitle } from "@/components/HeaderTitle";
+import { HeaderTitle } from "../../components/HeaderTitle";
 import { BookList } from "./components/BookList";
 
 interface Category {
@@ -12,7 +12,7 @@ export default async function Explore() {
 	)
 		.then(res => res.json())
 		.then(data => data.categories);
-		
+
 	return (
 		<div className="flex flex-col relative flex-1">
 			<HeaderTitle icon="Binoculars" title="Explorar" />
