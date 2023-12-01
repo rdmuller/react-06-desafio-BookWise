@@ -3,9 +3,12 @@ import Link from "next/link";
 import { SignIn } from "@phosphor-icons/react/dist/ssr/SignIn";
 import { ButtonLink } from "./components/ButtonLink";
 import { getServerSession } from "next-auth";
+import { Avatar } from "../Avatar";
+import { SignOutButton } from "../SignOutButton";
 
 export async function SideBar() {
 	const session = await getServerSession();
+	const classButtonSignInOut = "flex font-bold text-gray-200 gap-3 px-2 py-1 items-center align-middle rounded hover:bg-slate-200 hover:bg-opacity-10";
 
 	return (
 		<aside className="h-screen flex relative max-h-[61.75rem]">
@@ -24,11 +27,20 @@ export async function SideBar() {
 					</div>
 				</div>
 
-				<Link href="/" className="flex font-bold text-gray-200 gap-3 align-middle mb-5">
-					{session?.user?.email ? "Logout" : "Fazer login"}
-                    
-					<SignIn size={20} />
-				</Link>
+				<div className="flex flex-row gap-3 mb-5 items-center justify-center">
+					{session?.user?.image ? (
+						<>
+							<Avatar src={session?.user?.image} />
+							<SignOutButton className={classButtonSignInOut} />
+						</>
+					) : (
+						<Link href="/" className={classButtonSignInOut}>
+							Fazer login
+							<SignIn size={20} />
+						</Link>
+
+					) }
+				</div>
 
 			</div>
 		</aside>

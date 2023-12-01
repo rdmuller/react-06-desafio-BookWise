@@ -30,4 +30,4 @@ export const SignInButton = forwardRef<ElementRef<"button">, ButtonProps>(
 	}
 );
 
-SignInButton.displayName = "Button";
+SignInButton.displayName = "ButtonSignIn";
