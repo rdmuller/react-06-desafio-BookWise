@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { Popover } from "../../../components/Popover";
 import { ViewRate } from "../../../components/ViewRate";
 import axios from "axios";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HeaderComment } from "../../../components/HeaderComment";
 import { InfoCard } from "../../../components/InfoCard";
+import { Assesment } from "./Assesment";
 
 interface BookDetailsProps {
 	bookId: string,
@@ -32,7 +34,9 @@ interface Book {
 }
 
 export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
+	const { data: session } = useSession();
 	const [book, setBook] = useState<Book>();
+	const [showAssesment, setShowAssesment] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -48,6 +52,10 @@ export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
 		};
 		fetchData();
 	}, [bookId]);
+
+	function handleCloseAssesment() {
+		setShowAssesment(false);
+	}
 	
 	return (
 		<Popover onClosePopover={onCloseDetails}>
@@ -74,17 +82,28 @@ export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
 					</div>
 				</div>
 			</div>
+
 			<div className="flex flex-row justify-between mt-10 mb-4">
 				<span>Avaliações</span>
-				<button className="text-purple-100 font-bold text-base leading-base px-2 py-1 rounded hover:bg-gray-600">Avaliar</button>
+				{ !showAssesment &&
+					<button 
+						className="text-purple-100 font-bold text-base leading-base px-2 py-1 rounded hover:bg-gray-600" 
+						onClick={() => setShowAssesment(true)}
+					>
+						Avaliar
+					</button>
+				}
 			</div>
+
 			<div className="flex flex-col gap-3">
+				{showAssesment && <Assesment onCloseAssesment={handleCloseAssesment} /> }
+
 				{book?.ratings.map(rating => {
 					return (
-						<div className="flex flex-col gap-6 p-6 bg-gray-700 rounded-lg" key={rating.id}>
-							<HeaderComment userName={rating.user_name} userAvatarUrl={rating.user_avatar_url} rate={rating.rate} createdAt={rating.created_at} />
+						<div className="base-card" key={rating.id}>
+							<HeaderComment userName={rating.user_name} userAvatarUrl={rating.user_avatar_url} rate={rating.rate} createdAt={rating.created_at} userNameBold />
 							<p className="text-gray-300 leading-base text-sm">{rating.description}</p>
-						</div>		
+						</div>
 					);
 				})}
 			</div>

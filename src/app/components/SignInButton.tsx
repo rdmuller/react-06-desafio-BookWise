@@ -14,9 +14,11 @@ export const SignInButton = forwardRef<ElementRef<"button">, ButtonProps>(
 		function handleLogin() {
 			switch (serviceToConnect) {
 			case "github":
+				signIn("github", { callbackUrl: "/home" });
 				break;
 			case "google":
 				signIn("google", {callbackUrl: "/home" });
+				break;
 			}
 		}
 

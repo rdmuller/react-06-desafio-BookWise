@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignInButton } from "../components/SignInButton";
 
-export default function Home() {
+export default function Login() {
 	return (
 		<div className="flex flex-row justify-start items-center gap-48">
 			<aside className="flex relative h-screen w-[39.625rem]">
 				<div className="rounded-xl absolute m-5 top-0 left-0 right-0 bottom-0 flex">
-					<Image className="h-full w-full object-cover rounded-lg" src="/bg_login.svg" width={0} height={0} alt=""/>
+					<Image className="h-full w-full object-cover rounded-lg" src="/bg_login.svg" width={0} height={0} alt="" />
 				</div>
 				<div className="absolute flex align-middle justify-center left-0 right-0 top-0 bottom-0">
 					<Image src="/logo_full.svg" width={232} height={58} alt="" />
