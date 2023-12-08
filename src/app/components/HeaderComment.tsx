@@ -24,7 +24,7 @@ export function HeaderComment({userAvatarUrl, rate, userName, createdAt, userNam
 					{createdAt && <span className="text-gray-400">{createdAtRelativeToNow}</span>}
 				</div>
 			</div>
-			<ViewRate rate={rate} />
+			{rate && <ViewRate rate={rate} />}
 		</div>
 	);
 }
