@@ -2,7 +2,7 @@ import { HeaderComment } from "@/app/components/HeaderComment";
 import { X } from "@phosphor-icons/react/dist/ssr/X";
 import { Check } from "@phosphor-icons/react/dist/ssr/Check";
 import { useSession } from "next-auth/react";
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Rating } from "@/app/components/Rating";
 
 interface AssesmentProps {
@@ -25,14 +25,19 @@ export function Assesment({onCloseAssesment}:AssesmentProps) {
 	function handleChangeRate(newRate: number) {
 		setRate(newRate);
 	}
+
+	function handleSubmit(event: FormEvent) {
+		event.preventDefault();
+		console.log("fez o submit");
+	}
     
 	return (
 		<div className="base-card">
 			<div className="flex flex-row justify-between items-center">
-				<HeaderComment userName={String(session?.user?.name)} userAvatarUrl={String(session?.user?.image)} userNameBold />
+				<HeaderComment userName={session?.user?.name ?? ""} userAvatarUrl={session?.user?.image ?? ""} userNameBold />
 				<Rating onChangeRate={handleChangeRate} />
 			</div>
-			<form className="flex flex-col gap-3">
+			<form className="flex flex-col gap-3" onSubmit={handleSubmit}>
 				<textarea 
 					className="text-gray-400 text-sm font-normal leading-base bg-gray-800 py-[0.875rem] px-5 h-40 rounded resize-none border-solid border border-gray-500 focus:outline-0" 
 					placeholder="Escreva sua avaliação" 
