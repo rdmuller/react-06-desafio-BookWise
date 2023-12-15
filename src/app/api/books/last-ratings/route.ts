@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../../lib/prisma";
+import { prisma } from "../../../../lib/prisma";
 
 export async function GET(req: NextRequest) {
 	const pageRows = req.nextUrl.searchParams.get("page_rows") ? Number(req.nextUrl.searchParams.get("page_rows")) : 10;
