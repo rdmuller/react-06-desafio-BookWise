@@ -21,7 +21,7 @@ export async function GET(req: Request, { params }: BookProps) {
 					user: {
 						select: {
 							name: true,
-							avatar_url: true
+							image: true
 						}
 					},
 					created_at: true,
@@ -65,7 +65,7 @@ export async function GET(req: Request, { params }: BookProps) {
 			return ({
 				id: rating.id,
 				user_name: rating.user.name,
-				user_avatar_url: rating.user.avatar_url,
+				user_image: rating.user.image,
 				rate: rating.rate,
 				created_at: rating.created_at,
 				description: rating.description

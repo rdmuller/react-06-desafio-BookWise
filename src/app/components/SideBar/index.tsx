@@ -10,6 +10,10 @@ export async function SideBar() {
 	const session = await getServerSession();
 	const classButtonSignInOut = "flex font-bold text-gray-200 gap-3 px-2 py-1 items-center align-middle rounded hover:bg-slate-200 hover:bg-opacity-10";
 
+	console.log("=========================");
+	console.log(JSON.stringify(session));
+	console.log("=========================");
+
 	return (
 		<aside className="h-screen flex relative max-h-[61.75rem]">
 			<div className="rounded-xl absolute m-5 top-0 left-0 right-0 bottom-0 flex w-[14.5rem]">

@@ -7,7 +7,7 @@ interface Rating {
 	rate: number,
 	user: {
 		name: string,
-		avatar_url: string
+		image: string
 	},
 	book: {
 		name: string,
@@ -32,7 +32,7 @@ export default async function LastRatings() {
 			<div className="flex flex-col gap-3 absolute bottom-0 top-9 min-w-[38rem] overflow-y-auto p-[2px]">
 				{lastRatings.map((rating) => {
 					return (
-						<BookCardWithComment key={rating.id} author={rating.book.author} bookName={rating.book.name} description={rating.description} created_at={rating.created_at} rate={rating.rate} userName={rating.user.name} bookCoverUrl={rating.book.cover_url} userAvatarUrl={rating.user.avatar_url} />
+						<BookCardWithComment key={rating.id} author={rating.book.author} bookName={rating.book.name} description={rating.description} created_at={rating.created_at} rate={rating.rate} userName={rating.user.name} bookCoverUrl={rating.book.cover_url} userAvatarUrl={rating.user.image} />
 					);
 				})}
 			</div>

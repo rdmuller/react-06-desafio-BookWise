@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
 			user: {
 				select: {
 					name: true,
-					avatar_url: true
+					image: true
 				}
 			},
 			book: {

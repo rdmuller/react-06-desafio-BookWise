@@ -16,7 +16,7 @@ interface BookDetailsProps {
 interface Rating {
 	id: string,
 	user_name: string,
-	user_avatar_url: string,
+	user_image: string,
 	rate: number,
 	created_at: string,
 	description: string,
@@ -37,6 +37,8 @@ export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
 	const { data: session } = useSession();
 	const [book, setBook] = useState<Book>();
 	const [showAssesment, setShowAssesment] = useState(false);
+
+	console.log(JSON.stringify(session));
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -101,7 +103,7 @@ export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
 				{book?.ratings.map(rating => {
 					return (
 						<div className="base-card" key={rating.id}>
-							<HeaderComment userName={rating.user_name} userAvatarUrl={rating.user_avatar_url} rate={rating.rate} createdAt={rating.created_at} userNameBold />
+							<HeaderComment userName={rating.user_name} userAvatarUrl={rating.user_image} rate={rating.rate} createdAt={rating.created_at} userNameBold />
 							<p className="text-gray-300 leading-base text-sm">{rating.description}</p>
 						</div>
 					);
