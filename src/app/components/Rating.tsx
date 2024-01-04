@@ -1,14 +1,21 @@
 "use client";
 
 import { Star } from "@phosphor-icons/react/dist/ssr/Star";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface RatingProps {
+	previousRate?: number
 	onChangeRate: (rate: number) => void
 }
 
-export function Rating({ onChangeRate }: RatingProps) {
+export function Rating({ previousRate, onChangeRate }: RatingProps) {
 	const [rate, setRate] = useState(0);
+
+	useEffect(() => {
+		if (previousRate) {
+			setRate(previousRate);
+		}
+	}, [previousRate]);
 
 	function handleChangeRate(newRate: number) {
 		setRate(newRate);

@@ -97,8 +97,8 @@ export function BookDetails({ bookId, onCloseDetails }:BookDetailsProps) {
 				}
 			</div>
 
-			<div className="flex flex-col gap-3">
-				{showAssesment && <Assesment onCloseAssesment={handleCloseAssesment} /> }
+			<div className="flex flex-col gap-3 pb-4">
+				{showAssesment && <Assesment bookId={bookId} onCloseAssesment={handleCloseAssesment} /> }
 
 				{book?.ratings.map(rating => {
 					return (

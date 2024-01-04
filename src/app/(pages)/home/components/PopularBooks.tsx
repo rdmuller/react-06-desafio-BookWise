@@ -1,5 +1,5 @@
+import { api } from "@/lib/axios";
 import { BookSimpleCard } from "../../../components/SimpleCard";
-import axios from "axios";
 
 interface Book {
 	name: string,
@@ -12,7 +12,7 @@ interface Book {
 export const revalidate = 300;
 
 export default async function PopularBooks() {
-	const popularBooks: Book[] = await axios.get("http://localhost:3000/api/books/most-popular", {
+	const popularBooks: Book[] = await api.get("/books/most-popular", {
 		params: {
 			page_rows: 3
 		}
